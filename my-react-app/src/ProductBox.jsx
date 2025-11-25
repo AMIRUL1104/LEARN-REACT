@@ -1,4 +1,6 @@
 import CarBox from "./CarBox";
+import PropTypes from "prop-types";
+
 const Cars = [
   {
     id: 1,
@@ -45,5 +47,7 @@ const Cars = [
 function ProductBox() {
   return <CarBox cars={Cars} />;
 }
-
+ProductBox.PropTypes = {
+  Cars: PropTypes.array.isRequired,
+};
 export default ProductBox;

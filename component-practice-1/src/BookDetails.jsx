@@ -10,7 +10,7 @@ function Bookdetails({ name, author }) {
   );
 }
 
-Bookdetails.proptypes = {
+Bookdetails.propTypes = {
   name: proptypes.string.isRequired,
   author: proptypes.string.isRequired,
 };

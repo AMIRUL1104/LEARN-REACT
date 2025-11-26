@@ -1,5 +1,5 @@
 import CarBox from "./CarBox";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 function ProductBox({ cars, searchTerm, isPremium }) {
   const filteredCars = cars
@@ -20,6 +20,11 @@ function ProductBox({ cars, searchTerm, isPremium }) {
   );
 }
 
+ProductBox.propTypes = {
+  cars: PropTypes.array.isRequired,
+  searchTerm: PropTypes.string.isRequired,
+  isPremium: PropTypes.bool.isRequired,
+};
 export default ProductBox;
 
 // // search functionality

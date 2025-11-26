@@ -1,4 +1,4 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 function CarBox({ car }) {
   return (
     <div
@@ -14,6 +14,14 @@ function CarBox({ car }) {
   );
 }
 
+CarBox.propTypes = {
+  car: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    title: PropTypes.string.isRequired,
+    brand: PropTypes.string.isRequired,
+    year: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  }).isRequired,
+};
 export default CarBox;
 
 // CarBox.propTypes = {

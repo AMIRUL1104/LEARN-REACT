@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function Search({ searchTerm, onSetSearchTerm }) {
   return (
     <input
@@ -9,5 +11,9 @@ function Search({ searchTerm, onSetSearchTerm }) {
     />
   );
 }
+Search.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  onSetSearchTerm: PropTypes.func.isRequired,
+};
 
 export default Search;

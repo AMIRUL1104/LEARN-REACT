@@ -1,9 +1,17 @@
-function Premium() {
+function Premium({ isPremium, onSetIsPremium }) {
   return (
-    <div>
-      <input type="checkbox" name="premium" id="premium" />
+    <form className="mb-3.5">
+      <input
+        type="checkbox"
+        checked={isPremium}
+        onChange={(event) => {
+          onSetIsPremium(event.target.checked);
+        }}
+        name="premium"
+        id="premium"
+      />
       <label htmlFor="premium">show primium only</label>
-    </div>
+    </form>
   );
 }
 

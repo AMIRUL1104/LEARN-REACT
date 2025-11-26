@@ -1,22 +1,15 @@
 // import PropTypes from "prop-types";
-function CarBox({ cars }) {
+function CarBox({ car }) {
   return (
     <div
-      className="mt-1 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] 
- gap-4"
+      key={car.id}
+      className="p-4 pl-5 rounded-2xl border border-gray-300 mb-4 shadow-2xl"
     >
-      {cars.map((car) => (
-        <div
-          key={car.id}
-          className="p-4 pl-5 rounded-2xl border border-gray-300 mb-4 shadow-2xl"
-        >
-          <h2 className="text-xl font-bold ">{car.title}</h2>
-          <p>Brand: {car.brand}</p>
-          <p>Year: {car.year}</p>
-          <p>Price: ${car.price}</p>
-          <p>{car.isPremium ? "Premium" : "Standard"}</p>
-        </div>
-      ))}
+      <h2 className="text-xl font-bold ">{car.title}</h2>
+      <p>Brand: {car.brand}</p>
+      <p>Year: {car.year}</p>
+      <p>Price: ${car.price}</p>
+      <p>{car.isPremium ? "Premium" : "Standard"}</p>
     </div>
   );
 }

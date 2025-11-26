@@ -1,53 +1,38 @@
 import CarBox from "./CarBox";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-const Cars = [
-  {
-    id: 1,
-    title: "Luxury Sedan",
-    brand: "Mercedes",
-    year: 2023,
-    price: 80000,
-    isPremium: true,
-  },
-  {
-    id: 2,
-    title: "Family SUV",
-    brand: "Toyota",
-    year: 2022,
-    price: 45000,
-    isPremium: false,
-  },
-  {
-    id: 3,
-    title: "Sports Car",
-    brand: "Porsche",
-    year: 2023,
-    price: 120000,
-    isPremium: true,
-  },
-  {
-    id: 4,
-    title: "Electric Hatchback",
-    brand: "Nissan",
-    year: 2022,
-    price: 35000,
-    isPremium: false,
-  },
-  {
-    id: 5,
-    title: "Luxury SUV",
-    brand: "BMW",
-    year: 2023,
-    price: 90000,
-    isPremium: true,
-  },
-];
+function ProductBox({ cars, searchTerm, isPremium }) {
+  const filteredCars = cars
+    .filter((car) => {
+      return car.title.toLowerCase().includes(searchTerm.toLowerCase());
+    })
+    .filter((car) => {
+      if (isPremium) return car.isPremium === isPremium;
+      return true;
+    });
 
-function ProductBox() {
-  return <CarBox cars={Cars} />;
+  return (
+    <div className="mt-1 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4">
+      {filteredCars.map((car) => {
+        return <CarBox car={car} key={car.id} />;
+      })}
+    </div>
+  );
 }
-ProductBox.PropTypes = {
-  Cars: PropTypes.array.isRequired,
-};
+
 export default ProductBox;
+
+// // search functionality
+// // let searched = cars.forEach((car) => {
+//   if (car.title.toLowerCase().indexOf(searchTerm.toLowerCase()) === -1) {
+//     return;
+//   }
+//   filteredCars.push(<CarBox car={car} key={car.id} />);
+// });
+// // premium cars functionality
+// filteredCars.forEach((car) => {
+//   if (isPremium === false) {
+//     return;
+//   }
+//   filteredCars.push(<CarBox car={car} key={car.id} />);
+// });

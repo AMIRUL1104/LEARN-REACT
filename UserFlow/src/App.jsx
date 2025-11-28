@@ -1,9 +1,9 @@
 import "./App.css";
-
+import UserFlow from "./UserFlow";
 function App() {
   return (
     <>
-      <h1 className=" mt-30 ">UserFlow</h1>
+      <UserFlow />
     </>
   );
 }

@@ -4,7 +4,7 @@ import UserCards from "./UserCards.jsx";
 import { useState } from "react";
 
 function UserFlow() {
-  const [addedUsers, setAddedUsers] = useState("");
+  const [addedUsers, setAddedUsers] = useState();
   const [currentAddedUsers, setCurrentAddedUsers] = useState([]);
   const users = [
     { id: 1, fullName: "Rahim Uddin", age: 22, occupation: "Student" },
@@ -18,12 +18,12 @@ function UserFlow() {
       occupation: "Marketing Specialist",
     },
   ];
-  console.log(currentAddedUsers);
 
   const handleUser = (addedUsers) => {
     if (addedUsers === false) {
       return;
     }
+
     const user = users.find((u) => u.id === addedUsers);
     console.log(user);
 
@@ -45,4 +45,5 @@ function UserFlow() {
     </>
   );
 }
+
 export default UserFlow;

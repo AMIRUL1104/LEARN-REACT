@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function UserBox({ currentAddedUsers }) {
   console.log(currentAddedUsers);
 
@@ -16,5 +18,16 @@ function UserBox({ currentAddedUsers }) {
     </section>
   );
 }
+
+UserBox.propTypes = {
+  currentAddedUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      fullName: PropTypes.string.isRequired,
+      age: PropTypes.number.isRequired,
+      occupation: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default UserBox;

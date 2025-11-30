@@ -1,6 +1,6 @@
 import TotalUserCount from "./TotalUserCount";
 import AddUser from "./AddUser";
-
+import PropTypes from "prop-types";
 function MenuBar({
   addedUsers,
   onSetAddedUsers,
@@ -19,4 +19,11 @@ function MenuBar({
     </section>
   );
 }
+MenuBar.propTypes = {
+  currentAddedUsers: PropTypes.array.isRequired,
+  addedUsers: PropTypes.number,
+  onSetAddedUsers: PropTypes.func.isRequired,
+  onAddUser: PropTypes.func.isRequired,
+};
+
 export default MenuBar;

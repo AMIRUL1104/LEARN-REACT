@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function getRandomId() {
   return Math.floor(Math.random() * 5) + 1;
 }
@@ -45,5 +47,19 @@ function AddUser({
     </button>
   );
 }
+
+AddUser.propTypes = {
+  addedUsers: PropTypes.number, // optional
+  onSetAddedUsers: PropTypes.func.isRequired,
+  currentAddedUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      fullName: PropTypes.string,
+      age: PropTypes.number,
+      occupation: PropTypes.string,
+    })
+  ).isRequired,
+  onAddUser: PropTypes.func.isRequired,
+};
 
 export default AddUser;

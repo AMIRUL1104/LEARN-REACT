@@ -1,5 +1,5 @@
 Finall Result
-![project picture](.\src\assets\project.png)
+![project picture](./src/assets/project.png)
 
 component diagram picture
 ![component diagram](./src/assets/componentDiagram.jpg "component diagram")

@@ -26,18 +26,3 @@ ProductBox.propTypes = {
   isPremium: PropTypes.bool.isRequired,
 };
 export default ProductBox;
-
-// // search functionality
-// // let searched = cars.forEach((car) => {
-//   if (car.title.toLowerCase().indexOf(searchTerm.toLowerCase()) === -1) {
-//     return;
-//   }
-//   filteredCars.push(<CarBox car={car} key={car.id} />);
-// });
-// // premium cars functionality
-// filteredCars.forEach((car) => {
-//   if (isPremium === false) {
-//     return;
-//   }
-//   filteredCars.push(<CarBox car={car} key={car.id} />);
-// });

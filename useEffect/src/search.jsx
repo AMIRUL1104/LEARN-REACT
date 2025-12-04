@@ -60,18 +60,18 @@ function Search() {
   }, [searchTerms]);
 
   return (
-    <>
+    <div className=" mt-8">
       <div>
         <input
           type="text"
           value={searchTerms}
           onChange={(event) => setSearchTerms(event.target.value)}
-          className="border-2 p-2 rounded-3xl"
+          className="border-2 p-2 rounded-2xl mb-5"
           placeholder="search..."
         />
       </div>
       <Productoutput filteredCars={filteredCars} />
-    </>
+    </div>
   );
 }
 

@@ -1,12 +1,15 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
-
+import H2 from "./TaskNo";
 function practice_1() {
   return (
-    <div className="flex gap-1.5 ">
-      <Button message="Dancing">Dance</Button>
-      <Button message="jumping">jump</Button>
-    </div>
+    <>
+      <H2>task 1</H2>
+      <div className="flex gap-1.5 ">
+        <Button message="Dancing">Dance</Button>
+        <Button message="jumping">jump</Button>
+      </div>
+    </>
   );
 }
 

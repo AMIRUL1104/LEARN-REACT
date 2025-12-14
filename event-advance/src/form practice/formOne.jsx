@@ -1,8 +1,13 @@
 import { useState } from "react";
 
 function FormOne() {
-  const [userInfo, setUserInfo] = useState();
-  console.log(userInfo);
+  const [users, setUsers] = useState([]);
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: "",
+  });
+  // console.log(userInfo);
+  console.log(users);
 
   const handleChange = (e) => {
     let key = e.target.name;
@@ -13,6 +18,18 @@ function FormOne() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const name = userInfo.name;
+    const email = userInfo.email;
+    const newUser = {
+      id: crypto.randomUUID(),
+      name,
+      email,
+    };
+    // const usersCopy = users;
+    setUsers([...users, newUser]);
+
+    setUserInfo({ name: "", email: "" });
   };
   return (
     <div>
@@ -27,6 +44,7 @@ function FormOne() {
         <input
           type="text"
           name="name"
+          value={userInfo.name}
           onChange={handleChange}
           placeholder="Enter Name"
           className="  border-2 bg-amber-50 border-amber-50 rounded-2xl p-1 w-3/4  "
@@ -35,6 +53,7 @@ function FormOne() {
         <input
           type="email"
           name="email"
+          value={userInfo.email}
           onChange={handleChange}
           placeholder="Enter Email"
           className=" bg-amber-50 border-amber-50 border-2 rounded-2xl p-1  w-3/4"
@@ -47,6 +66,22 @@ function FormOne() {
           submit
         </button>
       </form>
+
+      <ul className=" border-2 text-black w-3/4 mx-auto rounded-2xl">
+        {users.length === 0 ? (
+          <p>no users found</p>
+        ) : (
+          users.map((user) => (
+            <li
+              key={user.id}
+              className=" p-2.5 bg-sky-700 rounded-2xl text-white m-3.5"
+            >
+              <p>Name : {user.name}</p>
+              <p>Email : {user.email}</p>
+            </li>
+          ))
+        )}
+      </ul>
     </div>
   );
 }

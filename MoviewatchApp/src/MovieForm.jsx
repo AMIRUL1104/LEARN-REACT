@@ -1,6 +1,6 @@
 import { useState } from "react";
 import proptypes from "prop-types";
-function MovieForm({ addMovie }) {
+function MovieForm({ addMovie, showForm }) {
   const [newMovie, setNewMovie] = useState({
     title: "",
     ott: "",
@@ -16,8 +16,6 @@ function MovieForm({ addMovie }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(newMovie);
-
     if (!newMovie?.title.trim() || !newMovie?.ott.trim()) return;
 
     addMovie(newMovie);
@@ -25,13 +23,13 @@ function MovieForm({ addMovie }) {
   };
 
   return (
-    <div>
+    <div className={` mb-2.5 ${showForm ? "block" : "hidden"}`}>
       <h2 className=" text-center text-2xl font-bold text-sky-800 ">
         Add a New Movie
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="  border-cyan-800 flex flex-col items-center mt-4 gap-4 border-2 p-4 rounded-md "
+        className="  border-cyan-800 flex flex-col items-center mt-4 gap-4 p-4 rounded-md "
       >
         <input
           type="text"

@@ -1,12 +1,8 @@
 import MovieItem from "./MovieItem";
 import proptypes from "prop-types";
-
 function MovieList({ movies, rateMovie, toggleWatched, deleteMovie }) {
   return (
     <div>
-      <h2 className=" text-center text-2xl font-bold text-sky-800 m-8 ">
-        Movie List
-      </h2>
       {movies.length === 0 ? (
         <p className=" text-red-700 text-center">No movie found !</p>
       ) : (
@@ -31,5 +27,6 @@ MovieList.propTypes = {
   rateMovie: proptypes.func.isRequired,
   toggleWatched: proptypes.func.isRequired,
   deleteMovie: proptypes.func.isRequired,
+  setHandleFilter: proptypes.func.isRequired,
 };
 export default MovieList;

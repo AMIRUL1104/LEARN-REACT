@@ -2,12 +2,15 @@ import { useState } from "react";
 import Heading from "./Heading";
 import MovieForm from "./MovieForm";
 import MovieList from "./MovieList";
+import FilterMovies from "./FilterMovies";
+import AddMovie from "./AddMovie";
+import MovieListHeaing from "./MovieListHeaing";
 import proptypes from "prop-types";
 
 function MovieWatch() {
   const [movie, setMovie] = useState([]);
-  // const [movielist, setMovielist] = useState([]);
-
+  const [filteredMovie, setHandleFilter] = useState("all");
+  const [showForm, setShowForm] = useState(false);
   // console.log(movie);
 
   const addMovie = ({ title, ott }) => {
@@ -20,6 +23,14 @@ function MovieWatch() {
     };
     setMovie([...movie, addNewMovie]);
   };
+
+  //fitler function
+  const handleFilter = movie.filter((mov) => {
+    if (filteredMovie === "watched") return mov.watched;
+    if (filteredMovie === "unwatched") return !mov.watched;
+    return true;
+  });
+
   //  rating function
   const rateMovie = (id, rating) => {
     setMovie(movie.map((mov) => (mov.id === id ? { ...mov, rating } : mov)));
@@ -46,9 +57,16 @@ function MovieWatch() {
   return (
     <div className=" max-w-2xl bg-sky-200 p-3.5 mx-auto rounded-md mt-10 shadow-2xl shadow-sky-800 ">
       <Heading />
-      <MovieForm addMovie={addMovie} />
+      <MovieForm addMovie={addMovie} showForm={showForm} />
+
+      <div className=" flex items-center justify-between flex-row-reverse">
+        <FilterMovies filteredMovie={setHandleFilter} />
+        <AddMovie showForm={showForm} setShowForm={setShowForm} />
+        <MovieListHeaing />
+      </div>
+
       <MovieList
-        movies={movie}
+        movies={handleFilter}
         rateMovie={rateMovie}
         toggleWatched={toggleWatched}
         deleteMovie={deleteMovie}

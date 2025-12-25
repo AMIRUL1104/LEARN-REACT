@@ -9,7 +9,10 @@ function MovieItem({ movie, rateMovie, toggleWatched, deleteMovie }) {
   return (
     <li className=" flex justify-between bg-sky-100 p-3.5 rounded-md shadow-md shadow-sky-400 ">
       <span className=" font-semibold text-lg text-sky-900 capitalize ">
-        {movie.title} on {movie.ott} {movie.rating && `⭐ ${movie.rating}/5`}
+        <span className=" font-bold "> {movie.title}</span>{" "}
+        <span className=" text-sm">on</span>
+        <span className=" font-bold  "> {movie.ott}</span>
+        {movie.rating && `⭐ ${movie.rating}/5`}
       </span>
       <div className=" flex gap-2 ">
         <ReactStars

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Heading from "./Heading";
 import MovieForm from "./MovieForm";
 import MovieList from "./MovieList";
@@ -8,11 +8,20 @@ import MovieListHeaing from "./MovieListHeaing";
 import proptypes from "prop-types";
 
 function MovieWatch() {
-  const [movie, setMovie] = useState([]);
+  // staste declaration
+  // const [movie, setMovie] = useState([]);
   const [filteredMovie, setHandleFilter] = useState("all");
   const [showForm, setShowForm] = useState(false);
-  // console.log(movie);
+  // useeffect for initial load
+  const [movie, setMovie] = useState(() => {
+    const storedMovies = localStorage.getItem("myMovies");
+    return storedMovies ? JSON.parse(storedMovies) : [];
+  });
 
+  useEffect(() => {
+    localStorage.setItem("myMovies", JSON.stringify(movie));
+  }, [movie]);
+  // add movie function
   const addMovie = ({ title, ott }) => {
     let addNewMovie = {
       id: crypto.randomUUID(),
@@ -35,6 +44,7 @@ function MovieWatch() {
   const rateMovie = (id, rating) => {
     setMovie(movie.map((mov) => (mov.id === id ? { ...mov, rating } : mov)));
   };
+
   // toggle function
   const toggleWatched = (id) => {
     setMovie(

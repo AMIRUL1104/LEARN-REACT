@@ -29,7 +29,7 @@ function MovieForm({ addMovie, showForm }) {
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="  border-cyan-800 flex flex-col items-center mt-4 gap-4 p-4 rounded-md "
+        className="  border-cyan-800 flex flex-col items-center mt-4 gap-4 p-4 rounded-md bg-sky-100 shadow-md shadow-sky-600 "
       >
         <input
           type="text"
@@ -37,13 +37,13 @@ function MovieForm({ addMovie, showForm }) {
           value={newMovie?.title}
           onChange={handleInput}
           placeholder="Movie Name"
-          className=" border-2 rounded-md p-2 w-3/4 mx-auto mb-4 border-cyan-900 "
+          className=" border-2 rounded-md p-2 w-3/4 mx-auto mb-4 border-cyan-900 text-blue-900 "
         />
         <select
           name="ott"
           value={newMovie?.ott}
           onChange={handleInput}
-          className=" border-2 rounded-md p-2 w-3/4 mx-auto  border-cyan-900"
+          className=" border-2 rounded-md p-2 w-3/4 mx-auto  border-cyan-900  text-blue-900"
         >
           <option value="">Select OTT Platform</option>
           <option value="netflix">Netflix</option>

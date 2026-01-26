@@ -21,7 +21,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-
+.parent{
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 50px;
+}
 .practiceBox {
   width: 500px;
   border: 1px solid whitesmoke;

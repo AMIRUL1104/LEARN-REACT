@@ -18,21 +18,24 @@ const initialState = [
 ];
 
 function reducer(state, action) {
-  const actionId = Number(action.id);
+  switch (action.type) {
+    case "TOGGLE_STATUS":
+      return state.map((item) => {
+        const newstatus = item.status === "pending" ? "completed" : "pending";
 
-  const updated = state.map((item) => {
-    const newstatus = item.status === "pending" ? "completed" : "pending";
+        if (item.id === action.id) {
+          return {
+            ...item,
+            status: newstatus,
+          };
+        }
 
-    if (item.id === actionId) {
-      return {
-        ...item,
-        status: newstatus,
-      };
-    }
+        return item;
+      });
 
-    return item;
-  });
-  return updated;
+    default:
+      return state;
+  }
 }
 
 function PracticeThree() {
@@ -45,17 +48,17 @@ function PracticeThree() {
       <div>
         {state.map((item) => {
           return (
-            <div key={item.id} id={item.id} className="practiceBox">
+            <div key={item.id} id={item.id} className="taskBox">
               <h3>{item.title} </h3>
               <p>
                 {" "}
                 status {item.status}
                 <button
                   type="button"
-                  id={item.id}
-                  onClick={(e) =>
+                  onClick={() =>
                     dispatch({
-                      id: e.target.id,
+                      type: "TOGGLE_STATUS",
+                      id: item.id,
                     })
                   }
                 >
